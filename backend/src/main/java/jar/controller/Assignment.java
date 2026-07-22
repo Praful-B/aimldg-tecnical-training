@@ -2,6 +2,8 @@ package jar.controller;
 
 import org.springframework.web.bind.annotation.RestController;
 
+import jar.dto.numberDto;
+
 import java.util.HashMap;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,10 +33,11 @@ public class Assignment {
     }
 
     @PostMapping("/sum/{n}")
-    public HashMap<Integer, Integer> postNaturalNumberSum(@PathVariable int n) {
-        return new HashMap<Integer, Integer>() {{
+    public numberDto postNaturalNumberSum(@PathVariable int n) {
+        HashMap<Integer, Integer> hash = new HashMap<Integer, Integer>() {{
             put(n, n * (n + 1) / 2);
         }};
+        return new numberDto(n, hash.get(n));
     }
     
 }
